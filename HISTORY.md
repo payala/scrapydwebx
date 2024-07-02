@@ -1,7 +1,7 @@
 Release History
 ===============
 
-1.5.1 (2024-07-02)
+1.5.2 (2024-07-02)
 ------------------
 - Use max_instances to limit the number of instances of the same spider running on the same node
 
