@@ -58,7 +58,7 @@ setup(
 
     entry_points={
         "console_scripts": {
-            "scrapydweb = scrapydweb.run:main"
+            "scrapydwebx = scrapydweb.run:main"
         }
     },
 
