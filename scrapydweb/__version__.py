@@ -1,7 +1,7 @@
 # coding: utf-8
 
 __title__ = 'scrapydwebx'
-__version__ = '1.5.0'
+__version__ = '1.5.1'
 __author__ = 'payala'
 __author_email__ = 'ppayala@gmail.com'
 __url__ = 'https://github.com/payala/scrapydwebx'
