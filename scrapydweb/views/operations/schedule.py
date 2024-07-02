@@ -620,6 +620,7 @@ class ScheduleTaskView(BaseView):
         super(ScheduleTaskView, self).__init__()
 
         self.url = 'http://%s/schedule.json' % self.SCRAPYD_SERVER
+        self.listjobs_url = 'http://%s/listjobs.json' % self.SCRAPYD_SERVER
         self.task_id = request.form['task_id']
         self.jobid = request.form['jobid']
         self.data = {}
@@ -637,6 +638,27 @@ class ScheduleTaskView(BaseView):
             self.data['spider'] = task.spider
             self.data['jobid'] = self.jobid
             self.data.update(json.loads(task.settings_arguments))
-            status_code, js = self.make_request(self.url, data=self.data, auth=self.AUTH)
+            running_scheduled_count = self.get_number_scheduled_or_running_tasks(task.project, task.spider)
+            if running_scheduled_count < task.max_instances:
+                status_code, js = self.make_request(self.url, data=self.data, auth=self.AUTH)
+            else:
+                message = ("The number of scheduled or running tasks of project '%s' and spider '%s' "
+                           "has reached the limit %s.") % (task.project, task.spider, task.max_instances)
+                self.logger.info(message)
+                js = dict(url=self.url, auth=self.AUTH, status_code=-1, status=self.ERROR, message=message)
 
         return self.json_dumps(js, as_response=True)
+
+    def get_number_scheduled_or_running_tasks(self, project, spider):
+        status_code, js = self.make_request(self.listjobs_url, auth=self.AUTH)
+        if status_code != 200:
+            return None
+        count_pending = 0
+        count_running = 0
+        for pending_job in js.get('pending', []):
+            if pending_job['project'] == project and pending_job['spider'] == spider:
+                count_pending += 1
+        for running_job in js.get('running', []):
+            if running_job['project'] == project and running_job['spider'] == spider:
+                count_running += 1
+        return count_pending + count_running
