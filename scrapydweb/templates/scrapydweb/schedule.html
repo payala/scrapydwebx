@@ -131,7 +131,7 @@ print(get_localzone())</pre>
         </el-select>
       </el-form-item>
 
-      <el-form-item label="_version" prop="selectedVersion">
+      <el-form-item label="version" prop="selectedVersion">
         <el-select id="versions" v-model="form.selectedVersion" placeholder="Select a version" no-data-text="Select a project first..." @change="loadSpiders">
           <el-option v-for="version in versions" :key="version" :label="version" :value="version"></el-option>
         </el-select>
@@ -811,6 +811,9 @@ var Main = {
       this.form.selectedVersion = undefined;
       this.form.selectedSpider = undefined;
 
+      const formVersion = this.form;
+      const that = this;
+
       //fetch("{{ url_listversions }}".replace(/PROJECT_PLACEHOLDER/, this.form.selectedProject))
       //.then(res=>res.json())
       //.then(
@@ -843,6 +846,8 @@ var Main = {
               handleMessage(getRequestFailHtml(url_listversions_new, 'status', obj.status)+text+tip+message);
             } else {
               vm.versions = ['default: the latest version'].concat(obj.versions);
+              formVersion.selectedVersion = vm.versions[0];
+              that.loadSpiders();
             }
           } else {
             //alert("REQUEST got code: "+this.status);
