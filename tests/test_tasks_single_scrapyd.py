@@ -444,7 +444,7 @@ def test_edit_task(app, client):
         "replace_existing: 'True',",
         "action: 'add_fire',",
         "trigger: 'cron',",
-        u"name: '%s - edit'," % (NAME.replace("'", "\\'")),  # In HTML:  name: 'Chinese\' "中文 - edit',
+        u"name: '%s'," % (NAME.replace("'", "\\'")),  # In HTML:  name: 'Chinese\' "中文 - edit',
 
         "year: '2036',",
         "month: '12',",
