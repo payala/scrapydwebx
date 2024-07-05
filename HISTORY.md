@@ -1,15 +1,18 @@
 Release History
 ===============
 
-1.5.4 (2024-07-03)
+1.5.4 (2024-07-05)
 ------------------
 - Add dynamic jobs page update without reloading the page
+- Dont edit the timer task name when editing the timer task
+- Set `Add` by defult when creating or editing a timer task
+- Load the latest version of the spider by default when creating or editing a timer task
 
 1.5.3 (2024-07-02)
 ------------------
 - Use max_instances to limit the number of instances of the same spider running on the same node
 
-1.5.0 (2024-02-11)
+1.5.0 (2024-02-11) 
 ------------------
 - Update dependencies like Flask==2.0.0 
 - Support Python 3.6 to 3.12
