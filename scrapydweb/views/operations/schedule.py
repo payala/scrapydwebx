@@ -183,7 +183,7 @@ class ScheduleView(BaseView):
 
         self.kwargs.setdefault('expand_timer_task', 'add_task' in request.args)  # '+' button in the TimeTasks page
         self.kwargs.setdefault('task_id', 0)
-        self.kwargs['action'] = 'add_fire'
+        self.kwargs['action'] = 'add'
         self.kwargs['trigger'] = 'cron'
         self.kwargs.setdefault('name', '')
         self.kwargs['replace_existing'] = 'True'
