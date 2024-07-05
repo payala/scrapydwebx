@@ -4,7 +4,7 @@ from datetime import datetime
 import re
 import traceback
 
-from flask import flash, get_flashed_messages, render_template, request, url_for
+from flask import flash, get_flashed_messages, render_template, request, url_for, jsonify
 from six.moves.urllib.parse import urljoin
 
 from ...common import handle_metadata
@@ -95,6 +95,7 @@ class JobsView(BaseView):
         self.Job = None  # database class Job
 
     def dispatch_request(self, **kwargs):
+        format = request.args.get('format', default=None, type=str)
         status_code, self.text = self.make_request(self.url, auth=self.AUTH, as_json=False)
         if status_code != 200 or not re.search(r'<body><h1>Jobs</h1>', self.text):
             kwargs = dict(
@@ -133,7 +134,18 @@ class JobsView(BaseView):
             self.jobs = self.jobs_backup
             self.handle_jobs_without_db()
         self.set_kwargs()
-        return render_template(self.template, **self.kwargs)
+        if format == 'json':
+            # return jsonify(list(self.kwargs.get('jobs').items()))
+            added_data = {
+                'scrapyd_servers_amount': self.SCRAPYD_SERVERS_AMOUNT,
+                'show_scrapyd_items': self.SHOW_SCRAPYD_ITEMS,
+            }
+            # todo: change to_dict to something that converts to dict properties added afterwards
+            job_dict = [j.to_dict() | added_data for
+                        idx, j in enumerate(self.kwargs.get('jobs').items)]
+            return self.json_dumps(job_dict, as_response=True)
+        else:
+            return render_template(self.template, **self.kwargs)
 
     def set_flash(self):
         if self.metadata['pageview'] > 2 and self.metadata['pageview'] % 100:

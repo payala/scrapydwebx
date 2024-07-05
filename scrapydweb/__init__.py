@@ -326,6 +326,7 @@ def handle_template_context(app):
                                                 filename='%s/element-ui@2.4.6/lib/theme-chalk/index.css' % VERSION),
             static_js_element_ui_index=url_for(STATIC, filename='%s/element-ui@2.4.6/lib/index.js' % VERSION),
 
+            static_js_htmx=url_for(STATIC, filename='%s/js/htmx.min.js' % VERSION),
             static_js_common=url_for(STATIC, filename='%s/js/common.js' % VERSION),
             static_js_echarts_min=url_for(STATIC, filename='%s/js/echarts.min.js' % VERSION),
             static_js_icons_menu=url_for(STATIC, filename='%s/js/icons_menu.js' % VERSION),

@@ -70,6 +70,21 @@ def create_jobs_table(server):
             return "<Job #%s in table %s, %s/%s/%s start: %s>" % (
                 self.id, self.__tablename__, self.project, self.spider, self.job, self.start)
 
+        def to_dict(self):
+            # Return a dict representation of the object that can be serialized to JSON
+            # including properties added afterwards, only properties that are strings, numbers, booleans, lists, dicts
+            # or None are included.
+            # https://stackoverflow.com/questions/11351032/how-to-convert-a-sqlalchemy-object-to-a-dict
+
+            retval = dict((k, v) for (k, v) in vars(self).items() if isinstance(v, (str, int, bool,
+                                                                                  list, dict,
+                                                                                  type(None), datetime)))
+            # convert datetime to string
+            return {k: str(v) if isinstance(v, datetime) else v for (k, v) in retval.items()}
+
+
+
+
     return Job
     # sqlalchemy/ext/declarative/clsregistry.py:128: SAWarning: This declarative base already contains a class
     # with the same class name and module name as scrapydweb.models.Job,

@@ -1,7 +1,11 @@
 Release History
 ===============
 
-1.5.2 (2024-07-02)
+1.5.4 (2024-07-03)
+------------------
+- Add dynamic jobs page update without reloading the page
+
+1.5.3 (2024-07-02)
 ------------------
 - Use max_instances to limit the number of instances of the same spider running on the same node
 
