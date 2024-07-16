@@ -56,11 +56,14 @@
           dataSrc: ''
       },
       paging: true,
+      pageLength: 25,
       searching: true,
       ordering: true,
       info: true,
       autoWidth: false,
       scrollX: true,
+      errMode: "throw",
+      deferRender: true,
       columns: [
           {data: "index"},
           {data: "project"},
