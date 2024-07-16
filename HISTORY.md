@@ -1,6 +1,13 @@
 Release History
 ===============
 
+1.5.5 (2024-07-16)
+------------------
+- Fix dialog showing on ajax request error
+- Fix 500 error when jobs is empty
+- Set table defaults to 25 items per page
+- Set max jobs to 3000 by default until pagination is implemented
+
 1.5.4 (2024-07-05)
 ------------------
 - Add dynamic jobs page update without reloading the page
