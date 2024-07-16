@@ -52,7 +52,7 @@
     // Initialize DataTables
     var table_settings = {
       ajax: {
-          url: '{{ url_for('jobs', node=node, format='json') }}',
+          url: '{{ url_for('jobs', node=node, format='json', per_page=3000) }}',
           dataSrc: ''
       },
       paging: true,
