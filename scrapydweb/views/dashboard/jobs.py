@@ -16,7 +16,7 @@ from ..baseview import BaseView
 _metadata = handle_metadata()
 metadata = dict(
     pageview=_metadata.get('pageview', 1),
-    per_page=_metadata.get('jobs_per_page', 100),
+    per_page=_metadata.get('jobs_per_page', 3000),
     style=_metadata.get('jobs_style', 'database'),
     unique_key_strings={}
 )
