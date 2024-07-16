@@ -1,6 +1,11 @@
 Release History
 ===============
 
+1.5.6 (2024-07-16)
+------------------
+- Remove versioning of static files
+- Fix ajax call to request 3000 jobs explicitly
+
 1.5.5 (2024-07-16)
 ------------------
 - Fix dialog showing on ajax request error
