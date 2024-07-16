@@ -140,10 +140,11 @@ class JobsView(BaseView):
                 'scrapyd_servers_amount': self.SCRAPYD_SERVERS_AMOUNT,
                 'show_scrapyd_items': self.SHOW_SCRAPYD_ITEMS,
             }
-            # todo: change to_dict to something that converts to dict properties added afterwards
-            job_dict = [j.to_dict() | added_data for
-                        idx, j in enumerate(self.kwargs.get('jobs').items)]
-            return self.json_dumps(job_dict, as_response=True)
+            job_dicts = []
+            if self.kwargs.get('jobs'):
+                job_dicts = [j.to_dict() | added_data for
+                            idx, j in enumerate(self.kwargs.get('jobs').items)]
+            return self.json_dumps(job_dicts, as_response=True)
         else:
             return render_template(self.template, **self.kwargs)
 
