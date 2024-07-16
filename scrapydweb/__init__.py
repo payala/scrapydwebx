@@ -297,9 +297,6 @@ def handle_route(app):
 
 def handle_template_context(app):
     STATIC = 'static'
-    VERSION = 'v' + __version__.replace('.', '')
-    # MUST be commented out for released version
-    # VERSION = 'v131dev'
 
     @app.context_processor
     def inject_variable():
@@ -309,36 +306,36 @@ def handle_template_context(app):
             PYTHON_VERSION=PYTHON_VERSION,
             SCRAPYDWEB_VERSION=__version__,
 
-            # static_css_common=url_for(STATIC, filename='%s/css/common.css' % VERSION),
-            static_css_dropdown=url_for(STATIC, filename='%s/css/dropdown.css' % VERSION),
-            static_css_dropdown_mobileui=url_for(STATIC, filename='%s/css/dropdown_mobileui.css' % VERSION),
+            # static_css_common=url_for(STATIC, filename='css/common.css'),
+            static_css_dropdown=url_for(STATIC, filename='css/dropdown.css'),
+            static_css_dropdown_mobileui=url_for(STATIC, filename='css/dropdown_mobileui.css'),
             static_css_icon_upload_icon_right=url_for(STATIC,
-                                                      filename='%s/css/icon_upload_icon_right.css' % VERSION),
-            static_css_multinode=url_for(STATIC, filename='%s/css/multinode.css' % VERSION),
-            static_css_stacktable=url_for(STATIC, filename='%s/css/stacktable.css' % VERSION),
-            static_css_stats=url_for(STATIC, filename='%s/css/stats.css' % VERSION),
-            static_css_style=url_for(STATIC, filename='%s/css/style.css' % VERSION),
-            static_css_style_mobileui=url_for(STATIC, filename='%s/css/style_mobileui.css' % VERSION),
-            static_css_utf8=url_for(STATIC, filename='%s/css/utf8.css' % VERSION),
-            static_css_utf8_mobileui=url_for(STATIC, filename='%s/css/utf8_mobileui.css' % VERSION),
+                                                      filename='/css/icon_upload_icon_right.css'),
+            static_css_multinode=url_for(STATIC, filename='css/multinode.css'),
+            static_css_stacktable=url_for(STATIC, filename='css/stacktable.css'),
+            static_css_stats=url_for(STATIC, filename='css/stats.css'),
+            static_css_style=url_for(STATIC, filename='css/style.css'),
+            static_css_style_mobileui=url_for(STATIC, filename='css/style_mobileui.css'),
+            static_css_utf8=url_for(STATIC, filename='css/utf8.css'),
+            static_css_utf8_mobileui=url_for(STATIC, filename='css/utf8_mobileui.css'),
 
             static_css_element_ui_index=url_for(STATIC,
-                                                filename='%s/element-ui@2.4.6/lib/theme-chalk/index.css' % VERSION),
-            static_js_element_ui_index=url_for(STATIC, filename='%s/element-ui@2.4.6/lib/index.js' % VERSION),
+                                                filename='element-ui@2.4.6/lib/theme-chalk/index.css'),
+            static_js_element_ui_index=url_for(STATIC, filename='element-ui@2.4.6/lib/index.js'),
 
-            static_js_htmx=url_for(STATIC, filename='%s/js/htmx.min.js' % VERSION),
-            static_js_common=url_for(STATIC, filename='%s/js/common.js' % VERSION),
-            static_js_echarts_min=url_for(STATIC, filename='%s/js/echarts.min.js' % VERSION),
-            static_js_icons_menu=url_for(STATIC, filename='%s/js/icons_menu.js' % VERSION),
-            # static_js_github_buttons_html=url_for(STATIC, filename='%s/js/github_buttons.html' % VERSION),
-            static_js_github_buttons=url_for(STATIC, filename='%s/js/github_buttons.js' % VERSION),
-            static_js_jquery_min=url_for(STATIC, filename='%s/js/jquery.min.js' % VERSION),
-            static_js_multinode=url_for(STATIC, filename='%s/js/multinode.js' % VERSION),
-            static_js_stacktable=url_for(STATIC, filename='%s/js/stacktable.js' % VERSION),
-            static_js_stats=url_for(STATIC, filename='%s/js/stats.js' % VERSION),
-            static_js_vue_min=url_for(STATIC, filename='%s/js/vue.min.js' % VERSION),
+            static_js_htmx=url_for(STATIC, filename='js/htmx.min.js'),
+            static_js_common=url_for(STATIC, filename='js/common.js'),
+            static_js_echarts_min=url_for(STATIC, filename='js/echarts.min.js'),
+            static_js_icons_menu=url_for(STATIC, filename='js/icons_menu.js'),
+            # static_js_github_buttons_html=url_for(STATIC, filename='js/github_buttons.html'),
+            static_js_github_buttons=url_for(STATIC, filename='js/github_buttons.js'),
+            static_js_jquery_min=url_for(STATIC, filename='js/jquery.min.js'),
+            static_js_multinode=url_for(STATIC, filename='js/multinode.js'),
+            static_js_stacktable=url_for(STATIC, filename='js/stacktable.js'),
+            static_js_stats=url_for(STATIC, filename='js/stats.js'),
+            static_js_vue_min=url_for(STATIC, filename='js/vue.min.js'),
 
-            static_icon=url_for(STATIC, filename='%s/icon/fav.ico' % VERSION),
-            static_icon_shortcut=url_for(STATIC, filename='%s/icon/fav.ico' % VERSION),
-            static_icon_apple_touch=url_for(STATIC, filename='%s/icon/spiderman.png' % VERSION),
+            static_icon=url_for(STATIC, filename='icon/fav.ico'),
+            static_icon_shortcut=url_for(STATIC, filename='icon/fav.ico'),
+            static_icon_apple_touch=url_for(STATIC, filename='icon/spiderman.png'),
         )
